@@ -1,0 +1,16 @@
+server.port: 8888
+
+spring:
+  application:
+    name: config
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: vault
+  cloud:
+    config:
+      server:
+        vault:
+          kv-version: 2
+          authentication: token
+          token: s.Ljj1x1IXqaBrY3OlK3w5zriq

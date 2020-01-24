@@ -1,0 +1,25 @@
+stripe.auth.header: sk_test_4eC39HqLyjWDarjtT1zdp7dc
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: loan
+          uri: lb://loan-issuance
+          predicates:
+            - Path=/apply/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: loan
+        - id: credit
+          uri: https://api.stripe.com/
+          predicates:
+            - Path=/credit/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/v1
+            - AddRequestHeader=Authorization, Bearer ${stripe.auth.header}
+            - name: CircuitBreaker
+              args:
+                name: credit

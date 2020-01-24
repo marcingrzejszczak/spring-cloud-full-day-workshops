@@ -1,0 +1,36 @@
+spring.application.name: proxy
+server.port: 9083
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  sleuth:
+    baggage-keys:
+      - user
+    propagation-keys:
+      - x-my-special-key
+    # Explain this
+    local-keys:
+
+spring.cloud.function.definition: proxyEvents
+spring.cloud.stream.bindings.proxyEvents-out-0.destination: events
+
+# For accepting HTTPS
+#server:
+#  ssl:
+#    enabled: true
+#    key-alias: scg
+#    key-store-password: scg1234
+#    key-store: classpath:scg-keystore.p12
+#    key-store-type: PKCS12
+
+# Timeouts
+#spring:
+#  cloud:
+#    gateway:
+#      httpclient:
+#        connect-timeout: 1000
+#        response-timeout: 5s

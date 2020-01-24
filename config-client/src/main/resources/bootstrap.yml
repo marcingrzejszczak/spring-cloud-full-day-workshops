@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    config:
+      # For Vault
+      token: 's.Ljj1x1IXqaBrY3OlK3w5zriq'
+  application:
+    name: foo
+
+server:
+  port: 7654
+
+# For Refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

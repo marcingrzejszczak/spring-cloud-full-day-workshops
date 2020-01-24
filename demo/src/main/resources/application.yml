@@ -1,0 +1,11 @@
+my.property: test
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  port: 9876
+

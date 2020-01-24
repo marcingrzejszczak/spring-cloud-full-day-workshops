@@ -1,0 +1,19 @@
+spring.application.name: reporting
+server.port: 9084
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring.cloud.function.definition: events
+spring.cloud.stream.bindings.events-in-0.destination: events
+
+spring:
+  sleuth:
+    baggage-keys:
+      - user
+    propagation-keys:
+      - x-my-special-key
+    # Explain this
+    local-keys:

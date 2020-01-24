@@ -1,0 +1,20 @@
+server.port: 9081
+spring.application.name: loan-issuance
+spring:
+  sleuth:
+    baggage-keys:
+      - user
+    propagation-keys:
+      - x-my-special-key
+    # Explain this
+    local-keys:
+#  cloud:
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+
+
+logging.level.com.netflix: ERROR
+
+spring.cloud.function.definition: events
+spring.cloud.stream.bindings.events-out-0.destination: events

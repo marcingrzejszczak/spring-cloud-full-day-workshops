@@ -1,0 +1,16 @@
+server.port: 9082
+spring.application.name: fraud-detection
+
+logging.level.com.netflix: ERROR
+
+spring.cloud.function.definition: events
+spring.cloud.stream.bindings.events-out-0.destination: events
+
+spring:
+  sleuth:
+    baggage-keys:
+      - user
+    propagation-keys:
+      - x-my-special-key
+    # Explain this
+    local-keys:
